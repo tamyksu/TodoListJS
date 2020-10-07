@@ -4,11 +4,15 @@ var newAlement = document.querySelector("#newAlement");
 var viewAlement = document.querySelector("#viewAlement");
 var deleteAlement = document.querySelector("#deleteAlement");
 var textX = document.querySelectorAll("li");
+var listView = document.querySelector("#list");
+
   // put all of your JS code from the lecture here
 
 function listTodo(){
+	listView.innerHTML  ="";
 		todos.forEach(function(todo, i){
 		console.log(i +": "+todo);
+		listView.innerHTML  = listView.innerHTML +"<br />"+i+": "+todo;
 
 	});
 }
