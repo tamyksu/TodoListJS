@@ -1,43 +1,57 @@
 var todos = [];
 var index_list = 0;
-window.setTimeout(function() {
+var newAlement = document.querySelector("#newAlement");
+var viewAlement = document.querySelector("#viewAlement");
+var deleteAlement = document.querySelector("#deleteAlement");
+var textX = document.querySelectorAll("li");
   // put all of your JS code from the lecture here
 
-var input = prompt("What would you like to do?");
+function listTodo(){
+		todos.forEach(function(todo, i){
+		console.log(i +": "+todo);
 
-	while(input != "quit")
-	{
-		if(input == "new")
-		{
-			var input_add = prompt("Enter a new todo");
+	});
+}
+
+newAlement.addEventListener("click", function(){
+
+	var input_add = prompt("Enter a new todo");
 			todos.push(input_add);
 			console.log(input_add + " added to the list");
 			console.log("-----------updated list-------")
 			listTodo();
+});
 
-		}
-		else if(input == "list")
-		{
-			console.log("****************list*************")
+viewAlement.addEventListener("click", function(){
+
+console.log("****************list*************")
 			listTodo();
 			console.log(todos);
-		}
-		else if(input == "delete")
-		{
-			var input_remove = prompt("Enter index of item you want to delete ");
+});
+
+deleteAlement.addEventListener("click", function(){
+
+	var input_remove = prompt("Enter index of item you want to delete ");
+			while(input_remove>todos.length-1 )
+			{
+				input_remove = prompt("Not correct input\nEnter index of item you want to delete ");
+				
+			}
+			
 			todos.splice(input_remove,1);
 			console.log("-----------updated list-------")
 			listTodo();
-		}
-		
-		var input = prompt("What would you like to do?");
+});
 
-	}
-	console.log("Bye Bye");
-function listTodo(){
-			todos.forEach(function(todo, i){
-			console.log(i +": "+todo);
-
-		});
+for (var i = 0; i < textX.length; i++) {
+	textX[i].addEventListener("mouseover", function(){
+	this.style.color ="blue";
+});
 }
-}, 500);
+
+for (var i = 0; i < textX.length; i++) {
+	textX[i].addEventListener("mouseout", function(){
+	this.style.color ="black";
+});
+}
+	
